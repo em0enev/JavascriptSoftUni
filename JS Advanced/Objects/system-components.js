@@ -15,19 +15,17 @@ function solve(input) {
         system[systemName][componentName].push(subcomponentName);
     }
 
-    console.log(system.sort((a, b) => b - a));
-
-    for (let sysName in system) {
-        console.log(sysName);
-
-        for (let compName in system[sysName]) {
-            console.log(`|||${compName}`);
-
-            for (const subcompName of system[sysName][compName]) {
-                console.log(`||||||${subcompName}`);
-            }
-        }
-    }
+    Object.entries(system)
+        .sort((a, b) => a[0].localeCompare(b[0]))
+        .sort((a, b) => Object.keys(b[1]).length - Object.keys(a[1]).length)
+        .forEach(system => {
+            console.log(system[0]);
+            Object.entries(system[1]).sort((a, b) => b[1].length - a[1].length)
+                .forEach(component => {
+                    console.log(`|||${component[0]}`);
+                    component[1].forEach(e => console.log(`||||||${e}`));
+                });
+        });
 }
 
 solve(['SULS | Main Site | Home Page',
