@@ -1,21 +1,17 @@
-// function sumFourNumbers(a, b, c, d) {
-//     console.log(a + b + c + d)
-// }
-
-function sumFourNumberssssssssssssss(a, b, c, d) {
-    console.log(a + b + c + d)
+function solve(...input) {
+    Object.entries(input.reduce((prev, current) => {
+        let typeOfArg = typeof current
+        console.log(`${typeOfArg}: ${current}`)
+        if (!prev.hasOwnProperty(typeOfArg)) {
+            prev[typeOfArg] = 0
+        }
+        prev[typeOfArg]++;
+        // console.log("ot reduce", prev)
+        return prev;
+    }, {}))
+        .map(([type, count]) => `${type} = ${count}`)
+        .forEach(el => console.log(el))
 }
 
 
-function result(someFunc) {
-    console.log(someFunc === sumFourNumberssssssssssssss)
-    return (last) => {
-  return someFunc(1, 2, 3, last)
-    }
-}
-
-
-
-let lastFunc = result(sumFourNumberssssssssssssss)
-
-lastFunc(10)
+solve(42, 'cat', 15, 'kitten', 'tomcat')
