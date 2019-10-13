@@ -32,7 +32,6 @@ function solve() {
     }
   }
 
-
   function buyFurniture() {
     let checkboxes = document.querySelectorAll("input:checked")
 
@@ -45,22 +44,21 @@ function solve() {
 
       let tdS = parentTr.querySelectorAll("td")
 
-      let name = tdS[1].innerText
-      let sum = tdS[2].innerText
-      let factor = tdS[3].innerText
+      let name = tdS[1].textContent
+      let sum = tdS[2].textContent
+      let factor = tdS[3].textContent
 
       selectedFurnitureArr.push(name)
       totalSum += Number(sum)
       totalFactor += Number(factor)
-
-
     }
+
     let avgFactor = (totalFactor / (selectedFurnitureArr.length));
 
     let result = `Bought furniture: ${selectedFurnitureArr.join(", ")}\n`
       + `Total price: ${totalSum.toFixed(2)}\n`
       + `Average decoration factor: ${avgFactor}`
-      
+
     let textarea = document.querySelectorAll("div#exercise textarea")[1];
 
     textarea.value = result;
