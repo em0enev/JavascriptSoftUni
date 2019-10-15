@@ -5,7 +5,6 @@ function solve() {
    Object.values(document.querySelectorAll("section.cards div#player2Div"))
       .map(x => x.addEventListener("click", e => openCard(e)))
 
-   let cards = document.querySelectorAll("section.cards img")
    let history = [];
    let result = document.querySelectorAll("section.cards div#result span")
    let isClicked1 = false;
@@ -16,12 +15,10 @@ function solve() {
          isClicked1 = true;
          result[0].textContent = e.target.name
          e.target.src = "images/whiteCard.jpg"
-         let firstCard = e.target;
       } else {
          isClicked2 = true;
          result[2].textContent = e.target.name
          e.target.src = "images/whiteCard.jpg"
-         let secondCard = e.target
       }
 
       if (isClicked1 && isClicked2) {
